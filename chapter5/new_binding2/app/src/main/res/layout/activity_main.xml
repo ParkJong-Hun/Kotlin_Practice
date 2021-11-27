@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+DataBinding Libraryはプログラマティックじゃなくて宣言的な形式でLayoutのUI構成要素をアプリのデータソースとバインディングできる支援Library。
+Layoutは基本UI Framework methodを呼び出すコードが含まれたActivityから定義される。
+例えばfindViewById()を呼び出し、TextViewを探してviewModel変数のuserNameにバインディング
+-->
+<!--
+    DataBindingを使うためにrootViewの外にこういう文章を書く。
+-->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="vm"
+            type="com.parkjonghun.new_binding2.TheViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+        <!--例えば下のViewはBinding Libraryを使ってLayoutFileから直接Textを割り当てる。
+        こうするとJavaやKotlinコードを呼び出す必要がない。
+        代入式は「 @{} 」
+        -->
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.userName.toString()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(vm.userCount)}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
