@@ -9,7 +9,7 @@ import androidx.room.Entity
 class MainEntity(
     //フィールドの情報
     @ColumnInfo(name = "text", typeAffinity = ColumnInfo.TEXT)
-    val id: String
+    val text: String
 ) {
     //...
 }

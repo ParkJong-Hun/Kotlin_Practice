@@ -4,30 +4,24 @@ import android.content.Context
 import androidx.room.*
 
 //Entityを含めるデータベース
-@Database(entities = [MainEntity::class], version = 1, exportSchema = false)
+@Database(entities = [MainEntity::class], version = 1)
 abstract class MainModel: RoomDatabase() {
-    abstract fun accessEntity(): IEntityAccess
+    abstract fun accessEntity(): MainDao
+    //インスタンス化
     companion object {
-        private var instance: MainModel? = null
+        var instance: MainModel? = null
         @Synchronized
-        fun getInstance(context: Context): MainModel {
+        fun getInstance(context: Context): MainModel? {
             if(instance == null) {
                 synchronized(MainModel::class) {
                     instance = Room.databaseBuilder(
                         context,
-                        MainModel::class.java, //파일경로).build()
-                    )
+                        MainModel::class.java,
+                        "database")
+                        .build()
                 }
             }
             return instance!!
         }
     }
-}
-
-//テーブルを利用して作業できるオブジェクト
-@Dao
-interface IEntityAccess {
-    //質疑問
-    @Query("SELECT * FROM Entity")
-    fun select(): List<MainEntity>
 }

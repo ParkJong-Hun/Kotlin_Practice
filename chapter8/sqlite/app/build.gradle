@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdk 31
 
@@ -45,15 +47,15 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.fragment:fragment-ktx:1.4.0'
     //データベースをブラウザーで確認できる。
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+    //debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
     //Metaverseから作ったDebugging Toolライブラリー
         //implementation 'com.facebook.stetho:stetho:1.5.1'
 
     //SQLiteを簡単に管理するためのライブラリー「Room」
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
     //className_lmpl does not existsエラー防止
-    apply plugin: 'kotlin-kapt'
     kapt "androidx.room:room-compiler:$room_version"
 }
