@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">navigation</string>
+    <string name="second_fragment_text">二番目</string>
+</resources>
