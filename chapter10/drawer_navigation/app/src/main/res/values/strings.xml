@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">drawer_navigation</string>
+    <string name="drawer_size">100dp</string>
+    <string name="header_text">Header内容</string>
+</resources>
