@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">list_adapter</string>
+    <string name="recyclerviewText">text</string>
+</resources>
